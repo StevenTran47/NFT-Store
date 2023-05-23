@@ -1,22 +1,23 @@
-import logo from './logo.svg';
+import { Children } from 'react';
 import './App.css';
+import { Button } from './components/Button'
+import { Card } from './components/Card';
+
+// import { Counter, Counter2 } from './components/Counter';
+// import  Hello  from './components/Hello/Hello'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        {/* <Counter name="Hung"/> 
+        <BlackCounter name="Hung"/> */}
+        <Button percent={5}>clickme</Button>
+        <Button percent="-10"></Button>
+        <Button percent="20"></Button>
+        <Button percent="-30"></Button>
+        <Card name="Revenue" values="5.00"></Card>
       </header>
     </div>
   );
