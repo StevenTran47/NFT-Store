@@ -1,23 +1,18 @@
-import { Children } from 'react';
 import './App.css';
-import { Button } from './components/Button'
-import { Card } from './components/Card';
+import { Card } from 'components/Card';
 
-// import { Counter, Counter2 } from './components/Counter';
-// import  Hello  from './components/Hello/Hello'
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-
-        {/* <Counter name="Hung"/> 
-        <BlackCounter name="Hung"/> */}
-        <Button percent={5}>clickme</Button>
-        <Button percent="-10"></Button>
-        <Button percent="20"></Button>
-        <Button percent="-30"></Button>
-        <Card name="Revenue" values="5.00"></Card>
+        <div className='wrapper'>
+          <Card title={"Revenue"} amount="5.00" percent={12.3}></Card>
+          <Card title={"Spending"} amount="2.00" percent={8.1}></Card>
+          <Card title={"Roi"} content="+14.02" percent={-5.1}></Card>
+          <Card title={"Estimated"} amount="7.00" percent={3.2}></Card>
+        </div>
       </header>
     </div>
   );
