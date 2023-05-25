@@ -47,18 +47,18 @@ const StyledCard = styled.div`
   }      
 `;
 export const Card = ({ title, amount, content, percent }) => {
-    return (
-        <StyledCard>
-            <div className="title">{title}</div>
-            {amount?
-            <div className='amount-wrapper'>
-                <img className="eth" src={ethereum} alt="ethereum" /><span className='amount'>{amount}</span> ETH
-            </div>:
-            <div>
-                <span className="content">{content}</span> %
-            </div>    
-        }
-        <Button percent={percent} textColor="#747475" borderColor="#E9E9E9">{percent}%</Button>
-        </StyledCard>
-    )
+  return (
+    <StyledCard>
+      <div className="title">{title}</div>
+      {amount ?
+        <div className='amount-wrapper'>
+          <img className="eth" src={ethereum} alt="ethereum" /><span className='amount'>{amount}</span> ETH
+        </div> :
+        <div className='amount-wrapper'>
+          <span className="content">{content}</span> %
+        </div>
+      }
+      <Button percent={percent} textColor="#747475" borderColor="#E9E9E9">{percent}%</Button>
+    </StyledCard>
+  )
 }

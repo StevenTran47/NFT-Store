@@ -12,14 +12,14 @@ const LayoutStyled = styled.div`
   }
 `;
 const ContentStyled = styled.div`
-  background-color: #f23412;
+  /* background-color: #f23412; */
   /* margin-top: 64px; */
   /* height: 100vh; */
 `;
 const SideBarStyled = styled.div`
   background-color: #aaf031;
   float: left;
-  width: 20%;
+  width: 15%;
   height: 100vh;
 `;
 

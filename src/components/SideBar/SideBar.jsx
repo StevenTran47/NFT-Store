@@ -9,13 +9,17 @@ import favourIcon from "assets/favour.svg";
 import historyIcon from "assets/history.svg";
 import settingsIcon from "assets/settings.svg";
 import lightmodeIcon from "assets/lightmode.svg"
-import vectorIcon  from "assets/Vector.svg"
+import vectorIcon from "assets/Vector.svg"
+import { Balance } from "components/Balance";
+
+
 
 import { NavLink } from "react-router-dom";
 const StyledSideBar = styled.div`
   background-color: white ;
   height: 100vh;
   padding: 32px;
+  
   .logo {
     display: flex;
     align-items: center;
@@ -121,8 +125,12 @@ const StyledSideBar = styled.div`
     }
   }
 }
-
-
+  .eth-bg{
+    position: absolute;
+    top: 720px;
+    left: 60px;
+  }
+ 
 `;
 const StyledNavItem = styled.div`
   display: flex;
@@ -160,7 +168,7 @@ export const SideBar = () => {
             <div className="nav">
                 <NavItem icon={dashboardIcon} text="Dashboard" path="/"></NavItem>
                 <NavItem icon={marketIcon} text="Market" path="/about"></NavItem>
-                <NavItem icon={bidsIcon} text="Active Bids" path="/login"></NavItem>
+                <NavItem icon={bidsIcon} text="Active Bids" path="/"></NavItem>
                 <h6>Profile</h6>
                 <NavItem icon={portfolioIcon} text="My Portfolio" path="/"></NavItem>
                 <NavItem icon={walletIcon} text="Wallet" path="/"></NavItem>
@@ -168,19 +176,20 @@ export const SideBar = () => {
                 <NavItem icon={historyIcon} text="History" path="/"></NavItem>
                 <NavItem icon={settingsIcon} text="Settings" path="/"></NavItem>
                 <h6>Other</h6>
-               
-                <div className="toggle">                  
+                <div className="toggle">
                     <div class="uael-main-btn" data-switch-type="round_2">
-                    <NavItem icon={lightmodeIcon} text="Light Mode"></NavItem>  
+                        <NavItem icon={lightmodeIcon} text="Light Mode"></NavItem>
                         <div class="uael-toggle">
                             <input class="uael-switch-round-2 elementor-clickable" type="checkbox" id="toggle_2" />
-                            
+
                             <label for="toggle_2" class="elementor-clickable"></label>
-                            
+
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
+            <Balance title={"Your Balance"} content={"1,034.02"}></Balance>
+            
         </StyledSideBar>
     );
 };
