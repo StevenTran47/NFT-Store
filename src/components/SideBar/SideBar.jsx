@@ -1,7 +1,9 @@
+import * as React from 'react'
 import styled from "styled-components";
 import logo from "assets/logo.svg";
-import marketIcon from "assets/market-icon.svg";
-import dashboardIcon from "assets/dashboard.svg";
+import marketIcon  from "assets/market-icon.svg";
+// import { ReactComponent as MarketIcon } from "assets/market-icon.svg";
+import  dashboardIcon  from "assets/dashboard.svg";
 import bidsIcon from "assets/bids.svg";
 import portfolioIcon from "assets/portfolio.svg";
 import walletIcon from "assets/wallet.svg";
@@ -12,9 +14,6 @@ import lightmodeIcon from "assets/lightmode.svg"
 import sunIcon from "assets/sun.svg"
 import moonIcon from "assets/moon.svg"
 import { Balance } from "components/Balance";
-
-
-
 import { NavLink } from "react-router-dom";
 const StyledSideBar = styled.div`
 position: fixed;
@@ -147,51 +146,62 @@ const StyledNavItem = styled.div`
     text-decoration: unset;
     color: #7A797D;
   }
-  
+  .active {
+    svg {
+      path {
+        stroke: #f30ee4;
+      }  
+    }
+    color: #f30ee4;
+  }
 `;
 const NavItem = ({ text, path, icon }) => {
-    return (
-        <StyledNavItem>
-            <img src={icon} alt="nav-icon"></img>
-            <NavLink to={path}>{text}</NavLink>
-        </StyledNavItem>
-    )
+  return (
+    <StyledNavItem>
+      <img src={icon} alt="nav-icon"></img>
+      {/* <svg src={icon}></svg> */}
+      <NavLink to={path}>
+      {/* <MarketIcon /> */}
+        {text}
+      </NavLink>
+    </StyledNavItem>
+  )
 }
 export const SideBar = () => {
-    return (
-        <StyledSideBar>
-            <div className="logo">
-                <img src={logo} alt="logo"></img>
-                <div>
-                    <div className="logo-text">MyNFT</div>
-                    <div className="logo-desc">NFT Marketplace</div>
-                </div>
-            </div>
-            <div className="nav">
-                <NavItem icon={dashboardIcon} text="Dashboard" path="/"></NavItem>
-                <NavItem icon={marketIcon} text="Market" path="/about"></NavItem>
-                <NavItem icon={bidsIcon} text="Active Bids" path="/"></NavItem>
-                <h6>Profile</h6>
-                <NavItem icon={portfolioIcon} text="My Portfolio" path="/"></NavItem>
-                <NavItem icon={walletIcon} text="Wallet" path="/"></NavItem>
-                <NavItem icon={favourIcon} text="Favourites" path="/"></NavItem>
-                <NavItem icon={historyIcon} text="History" path="/"></NavItem>
-                <NavItem icon={settingsIcon} text="Settings" path="/"></NavItem>
-                <h6>Other</h6>
-                <div className="toggle">
-                    <div class="uael-main-btn" data-switch-type="round_2">
-                        <NavItem icon={lightmodeIcon} text="Light Mode"></NavItem>
-                        <div class="uael-toggle">
-                            <input class="uael-switch-round-2 elementor-clickable" type="checkbox" id="toggle_2" />
+  return (
+    <StyledSideBar>
+      <div className="logo">
+        <img src={logo} alt="logo"></img>
+        <div>
+          <div className="logo-text">MyNFT</div>
+          <div className="logo-desc">NFT Marketplace</div>
+        </div>
+      </div>
+      <div className="nav">
+        <NavItem icon={dashboardIcon} text="Dashboard" path="/"></NavItem>
+        <NavItem icon={marketIcon} text="Market" path="/about"></NavItem>
+        <NavItem icon={bidsIcon} text="Active Bids" path="/bids"></NavItem>
+        <h6>Profile</h6>
+        <NavItem icon={portfolioIcon} text="My Portfolio" path="/profolio"></NavItem>
+        <NavItem icon={walletIcon} text="Wallet" path="/wallet"></NavItem>
+        <NavItem icon={favourIcon} text="Favourites" path="/favourates"></NavItem>
+        <NavItem icon={historyIcon} text="History" path="/history"></NavItem>
+        <NavItem icon={settingsIcon} text="Settings" path="/setting"></NavItem>
+        <h6>Other</h6>
+        <div className="toggle">
+          <div class="uael-main-btn" data-switch-type="round_2">
+            <NavItem icon={lightmodeIcon} text="Light Mode" path="/ligtmode"></NavItem>
+            <div class="uael-toggle">
+              <input class="uael-switch-round-2 elementor-clickable" type="checkbox" id="toggle_2" />
 
-                            <label for="toggle_2" class="elementor-clickable"></label>
+              <label for="toggle_2" class="elementor-clickable"></label>
 
-                        </div>
-                    </div>
-                </div>                
             </div>
-            <Balance title={"Your Balance"} content={"1,034.02"}></Balance>
-            
-        </StyledSideBar>
-    );
+          </div>
+        </div>
+      </div>
+      <Balance title={"Your Balance"} content={"1,034.02"}></Balance>
+
+    </StyledSideBar>
+  );
 };
