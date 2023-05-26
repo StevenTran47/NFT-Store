@@ -103,7 +103,7 @@ position: fixed;
     }
     input[type='checkbox']:checked + label:after {
       transform: translateX(1.3em);
-      border: 0.2em solid ##F0F0F0;
+      border: 0.2em solid #F0F0F0;
       background-image: url("${moonIcon}");
       background-color: #fff;
     }
