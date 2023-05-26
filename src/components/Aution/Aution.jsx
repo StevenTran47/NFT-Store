@@ -4,6 +4,7 @@ import apeSmile from "assets/apeSmile.svg"
 import apeInLove from "assets/apeInLove.svg"
 import top2 from "assets/top2.svg"
 import top5 from "assets/top5.svg"
+import { Button } from "components/Button";
 
 
 let bidItems = [
@@ -118,6 +119,24 @@ const StyledAution = styled.div`
         color: #747475;
     }
    }
+   .aution-img{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .place-bid{
+    /* display: none; */
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   .aution-img:not(:hover){
+    .place-bid{
+        display: none;
+    }
+   }
 `;
 export const Aution = () => {
     return (
@@ -136,7 +155,11 @@ export const Aution = () => {
                {bidItems.map((bidItem) => {
                     const list = (
                         <div className="aution-item">
-                            <img src={bidItem.banner} alt="" />
+                            <div className="aution-img">
+                            <img src={bidItem.banner} alt="" />                            
+                            <Button className="place-bid" width={100} height={32} textColor="#5429FF" bgColor="#FFFFFF" borderRadius={40} >Place a Bid</Button>
+                            </div>
+                            
                             <div className="aution-title">
                                 <h2>{bidItem.name}</h2>
                                 <h5>{bidItem.like}</h5>
