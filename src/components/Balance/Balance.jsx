@@ -4,7 +4,6 @@ import balanceBg from "assets/Ethereum (ETH).svg"
 import smallETH from "assets/smallEthereum.svg"
 import plus from "assets/plus.svg"
 import arrow from "assets/arrow-right.svg"
-import R from "assets/R.png"
 const StyledBalance = styled.div`
     width: 228px;
     height: 220px;

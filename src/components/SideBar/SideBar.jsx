@@ -9,15 +9,17 @@ import favourIcon from "assets/favour.svg";
 import historyIcon from "assets/history.svg";
 import settingsIcon from "assets/settings.svg";
 import lightmodeIcon from "assets/lightmode.svg"
-import vectorIcon from "assets/Vector.svg"
+import sunIcon from "assets/sun.svg"
+import moonIcon from "assets/moon.svg"
 import { Balance } from "components/Balance";
 
 
 
 import { NavLink } from "react-router-dom";
 const StyledSideBar = styled.div`
+position: fixed;
   background-color: white ;
-  height: 100vh;
+  height: 1166px;
   padding: 32px;
   
   .logo {
@@ -94,15 +96,15 @@ const StyledSideBar = styled.div`
       border-radius: 5em;
     }
     input[type='checkbox'] + label:before {
-      background-color:#5429FF;
+      background-color:#F0F0F0;
     }
     input[type='checkbox']:checked + label:before {
-      background-color: #000000;
+      background-color: #F0F0F0;
     }
     input[type='checkbox']:checked + label:after {
       transform: translateX(1.3em);
-      border: 0.2em solid #000000;
-      background: url(vectorIcon);
+      border: 0.2em solid ##F0F0F0;
+      background-image: url("${moonIcon}");
       background-color: #fff;
     }
     input[type='checkbox'] + label:after {
@@ -119,8 +121,8 @@ const StyledSideBar = styled.div`
       border: 0.2em solid #767676;
     }
     input[type="checkbox"] + label:after {
-        border: 0.2em solid #5429FF;
-        background: url(vectorIcon);
+        border: 0.2em solid #F0F0F0;
+        background-image: url("${sunIcon}");
         background-color: #fff;
     }
   }

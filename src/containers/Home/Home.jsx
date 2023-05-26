@@ -1,12 +1,12 @@
 import 'App.css'
 import { PrimaryLayout } from "components/Layout";
 import { Widget } from 'components/Widget';
-import { Creater } from 'components/Creater';
+import { DashBoard } from 'components/DashBoard';
 const Home = () => {
     return(
       <PrimaryLayout>
         <Widget></Widget>
-        <Creater></Creater>
+        <DashBoard></DashBoard>
       </PrimaryLayout>       
     );
 }

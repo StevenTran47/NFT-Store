@@ -6,7 +6,7 @@ const StyledButton = styled.button`
   width: ${props => `${props.width}px`};
   height: ${props => `${props.height}px`};
   border: ${props => props.borderColor ? `1px solid ${props.borderColor}` : "none"};
-  border-radius: 12px;
+  border-radius: ${props => `${props.borderRadius}px`};
   background: ${props => props.bgColor};
   font-weight: 500;
   line-height: 21px;
@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     margin-right: 8px;
   }
 `;
-export const Button = ({ width, height, textColor, bgColor, borderColor, percent, fontSize, children, ...rest }) => {
+export const Button = ({ width, height, textColor, bgColor, borderColor, borderRadius, percent, fontSize, children, ...rest }) => {
   return (
     <StyledButton
       percent={percent}
@@ -25,6 +25,7 @@ export const Button = ({ width, height, textColor, bgColor, borderColor, percent
       textColor={textColor}
       bgColor={bgColor}
       borderColor={borderColor}
+      borderRadius={borderRadius}
       fontSize={fontSize}
       {...rest}
     >
@@ -39,4 +40,5 @@ Button.defaultProps = {
   width: 128,
   height: 46,
   fontSize: 16,
+  borderRadius: 40,
 };

@@ -10,8 +10,7 @@ const StyledWidget = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 110px;
     .banner{    
         width: 716px;
         height: 354px;    
@@ -43,7 +42,7 @@ const StyledWidget = styled.div`
             padding-left: 60px;
             display: flex;
             justify-content: space-around;
-            gap: 12px;
+            gap: 12px;           
            
     }
     .cart{
@@ -62,8 +61,8 @@ export const Widget = () => {
                 <div className="banner">     
                     <div className="banner-title">Discover, Create and Sell Your Own NFT.</div>
                     <div className="banner-btn">
-                        <Button  width={128} height={46} textColor="#5429FF" bgColor="#FFFFFF" >Following</Button>
-                        <Button  width={113} height={46} textColor="white" bgColor="rgba(0,0,0,0)" borderColor="#FFFFFF">Following</Button>
+                        <Button  width={128} height={46} textColor="#5429FF" bgColor="#FFFFFF" borderRadius={40} >Discover</Button>
+                        <Button  width={113} height={46} textColor="white" bgColor="rgba(0,0,0,0)" borderColor="#FFFFFF" borderRadius={40}>Create</Button>
                     </div>
                 </div>
             </div>
