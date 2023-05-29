@@ -4,6 +4,10 @@ import astro from "assets/astro.svg"
 import google from "assets/Google.svg"
 import git from "assets/git.svg"
 import facebook from "assets/facebook.svg"
+// import { LoginLayout } from "components/LoginLayout";
+import { Form, Field } from 'react-final-form'
+import { FORM_ERROR } from 'final-form'
+import  { Redirect, useHistory } from 'react-router-dom'
 const LoginContentStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -93,6 +97,24 @@ const LoginContentStyled = styled.div`
     background: #C0DBEA;
     border-radius: 4px;
     border: 0px;
+}
+#userName{
+  width: 100%;
+    height: 46px;
+    background: #C0DBEA;
+    border-radius: 4px;
+    border: 0px;
+}
+#password{
+  width: 100%;
+    height: 46px;
+    background: #C0DBEA;
+    border-radius: 4px;
+    border: 0px;
+}
+.password{
+    display: flex;
+    justify-content: space-between;
 }
 .form > form > .password{
     display: flex;
@@ -226,6 +248,18 @@ button  {
 }
 }
 `;
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const onSubmit = async values => {
+  await sleep(300)
+  if (values.username !== 'hoang') {
+    return { username: 'Unknown username' }
+  }
+  if (values.password !== 'hoang') {
+    return window.alert('LOGIN Failed!')
+  }
+  // window.alert('LOGIN SUCCESS!') 
+  
+}
 const Login = () => {
 
   return (
@@ -235,30 +269,110 @@ const Login = () => {
     <LoginContentStyled>
       <div className="form">
         <h1>Log In</h1>
-        <form>
-          <h2>Username</h2>
-          <input type="text" placeholder="username" id="userName" value="kminchelle" />
-          <div className="password">
-            <p>Password</p>
-            <p>Forgot Your Password?</p>
-          </div>
-          <input type="password" placeholder="*********" id="password" value="0lelplR" />
+        <Form
+          onSubmit={onSubmit}
+          validate={values => {
+            const errors = {}
+            if (!values.username) {
+              errors.username = 'Required'
+            }
+            if (!values.password) {
+              errors.password = 'Required'
+            }
+            return errors
+          }}
+          render={({
+            submitError,
+            handleSubmit,
+            form,
+            submitting,
+            pristine,
+            values
+          }) => (<form onSubmit={handleSubmit}>
+            {/* <h2>Username</h2>
+            <input type="text" placeholder="username" id="userName" value="kminchelle" />
+              <div className="password">
+                <p>Password</p>
+                <p>Forgot Your Password?</p>
+              </div>
+              <input type="password" placeholder="*********" id="password" value="0lelplR" /> */}
+            <Field name="username">
+              {({ input, meta }) => (
+                <div>
+                  <h2>Username</h2>
+                  <input {...input} type="text" placeholder="Username" id="userName" />
+                  {(meta.error || meta.submitError) && meta.touched && (
+                    <span>{meta.error || meta.submitError}</span>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name="password">
+              {({ input, meta }) => (
+                <div className="password">
+                  <p>Password</p>
+                  <input {...input} type="password" placeholder="Password" id="password" />
+                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                </div>
+              )}
+            </Field>
+            {submitError && alert({submitError})}
+            <div className="form-btn">
+              <button className="login-btn" type="submit" disabled={submitting}>Login</button>
+              <div className="cotinue">
+                <h4>or continue with</h4>
+              </div>
+              <div className="another">
+                <button className="btn-another google"><img src={google} alt="" /></button>
+                <button className="btn-another github"><img src={git} alt="" /></button>
+                <button className="btn-another facebook"><img src={facebook} alt="" /></button>
+              </div>
+              <div className="register">
+                <span>Don’t have an account yet?</span> <a href="#">Sign up for free</a>
+              </div>
+              <pre>{JSON.stringify(values, 0, 2)}</pre>
+            </div>
+            {/* {submitError && <div className="error">{submitError}</div>}
+            <div className="buttons">
+              <button type="submit" disabled={submitting}>
+                Log In
+              </button>
+              <button
+                type="button"
+                onClick={form.reset}
+                disabled={submitting || pristine}
+              >
+                Reset
+              </button>
+            </div> */}
+            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+          </form>)}
+        >
+          {/* <form>
+            <h2>Username</h2>
+            <input type="text" placeholder="username" id="userName" value="kminchelle" />
+            <div className="password">
+              <p>Password</p>
+              <p>Forgot Your Password?</p>
+            </div>
+            <input type="password" placeholder="*********" id="password" value="0lelplR" />
 
-          <div className="form-btn">
-            <button className="login-btn" type="button" onclick="login()">Login</button>
-            <div className="cotinue">
-              <h4>or continue with</h4>
+            <div className="form-btn">
+              <button className="login-btn" type="button" onclick="login()">Login</button>
+              <div className="cotinue">
+                <h4>or continue with</h4>
+              </div>
+              <div className="another">
+                <button className="btn-another google"><img src={google} alt="" /></button>
+                <button className="btn-another github"><img src={git} alt="" /></button>
+                <button className="btn-another facebook"><img src={facebook} alt="" /></button>
+              </div>
+              <div className="register">
+                <span>Don’t have an account yet?</span> <a href="#">Sign up for free</a>
+              </div>
             </div>
-            <div className="another">
-              <button className="btn-another google"><img src={google} alt=""/></button>
-              <button className="btn-another github"><img src={git} alt=""/></button>
-              <button className="btn-another facebook"><img src={facebook} alt=""/></button>
-            </div>
-            <div className="register">
-              <span>Don’t have an account yet?</span> <a href="#">Sign up for free</a>
-            </div>
-          </div>
-        </form>
+          </form> */}
+        </Form>
       </div>
       <div className="astro-bg"></div>
     </LoginContentStyled>
